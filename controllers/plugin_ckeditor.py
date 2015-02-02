@@ -32,14 +32,14 @@ def browse():
     browse_filter = current.plugin_ckeditor.settings.browse_filter
     set = db(table_upload.id>0)
     for key, val in browse_filter.items():
-        if value[0] == '<':
-            set = set(table_upload[key]<value[1:])
-        elif value[0] == '>':
-            set = set(table_upload[key]>value[1:])
-        elif value[0] == '!':
-            set = set(table_upload[key]!=value[1:])
+        if val[0] == '<':
+            set = set(table_upload[key]<val[1:])
+        elif val[0] == '>':
+            set = set(table_upload[key]>val[1:])
+        elif val[0] == '!':
+            set = set(table_upload[key]!=val[1:])
         else:
-            set = set(table_upload[key]==value)
+            set = set(table_upload[key]==val)
     
     rows = set.select(orderby=table_upload.title)
     
